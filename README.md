@@ -24,9 +24,6 @@ None of the above: Example - Unicef
     - project_presentation.pptx: PowerPoint presentation explaining the solution.
 - README.md: This file, providing an overview of the project and its components.
 
-## Requirements
-To run the notebook and API, you need to install Poetry.
-
 ## Getting Started
 Follow these steps to get started:
 - Clone this repository.
@@ -36,14 +33,20 @@ Follow these steps to get started:
 make install  # Installs dependencies using Poetry.
 make run-api
 ```
-- The API will be available at http://localhost:5000.
+- The API will be available at http://localhost:5001.
+
+We can also use docker to run the api:
+```bash
+docker build -t app .
+docker run -p 5001:5001 app
+```
 
 
 ## Training the Model
 Refer to the train_model.ipynb notebook for details on how to train the machine learning model using the provided dataset.
 
 ## API Usage
-To make predictions using the API, send a POST request with features to http://localhost:5000/predict. For example:
+To make predictions using the API, send a POST request with features to http://localhost:5001/predict. For example:
 
 ```bash
 curl -X POST -H "Content-Type: application/json" -d '{"feature1": "value1", "feature2": "value2"}' http://localhost:5000/predict

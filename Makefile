@@ -1,18 +1,20 @@
 .PHONY: tests
 
 setup-env:
-	pip install --upgrade poetry
-	poetry config virtualenvs.in-project true
-	poetry config cache-dir /tmp/poetry-cache
+	python -m venv .venv
+	. .venv/bin/activate && \
+	source .venv/bin/activate
+
 
 install: setup-env
-	poetry install --no-interaction
+	pip install --upgrade pip && \
+	pip install -r requirements.txt
 
 linter:
-	poetry run black . --check
+	.venv/bin/black . --check
 
 format:
-	poetry run black .
+	.venv/bin/black .
 
 run-api:
-	poetry run python src/api.py
+	./.venv/bin/python src/api.py
